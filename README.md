@@ -1,7 +1,8 @@
 # SwaggerBaseShow
 Basic Swagger Example
 
-粘贴示例代码
+复制以下swagger json示例代码,粘贴进 swagger edit 在线编辑器
+
 在 https://swagger.io/tools/swagger-editor/download/ 下安装swagger编辑工具
 
 ```js
