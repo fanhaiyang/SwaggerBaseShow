@@ -1,9 +1,9 @@
 # SwaggerBaseShow
 Basic Swagger Example
 
-复制以下swagger json示例代码,粘贴进 swagger edit 在线编辑器
+复制以下swagger json示例代码,粘贴进 swagger edit 在线编辑器,网址 http://editor.swagger.io/
 
-在 https://swagger.io/tools/swagger-editor/download/ 下安装swagger编辑工具
+也可在 https://swagger.io/tools/swagger-editor/download/ 下安装swagger编辑工具
 
 ```js
 swagger: "2.0"
