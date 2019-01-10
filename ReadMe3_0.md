@@ -1,3 +1,7 @@
+### swagger 3.0.2版本
+
+```js
+
 openapi: "3.0.0"
 info:
   version: "1.0.0"
@@ -11,7 +15,7 @@ paths:
     get:
       tags:
         - UserManage
-      summary: 获取用户信息
+      summary:''
       operationId: GetUser
       parameters:
         - name: userId
@@ -27,31 +31,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetData'
-  /getUserIp:
-    get:
-      tags:
-        - UserManage
-      summary: 获取用户IP范围
-      operationId: GetUserIp
-      parameters:
-        - name: userId
-          in: query
-          description: ''
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetIPData'
   /getUserCollection:
     get:
       tags:
         - UserManage
-      summary: 批量获取子账户信息
+      summary: ''
       operationId: GetUserCollection
       parameters:
         - name: userIdLike
@@ -81,76 +65,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDataList'
-  /getStudentCollection:
-    get:
-      tags:
-        - UserManage
-      summary: 批量获取学生账户信息
-      operationId: GetStudentCollection
-      parameters:
-        - name: userIdLike
-          in: query
-          description: '模糊匹配，格式：userId.%'
-          required: false
-          schema:
-            type: string
-        - name: offset
-          in: query
-          description: '分页偏移量'
-          required: false
-          schema:
-            type: integer
-            format: int32
-        - name: limit
-          in: query
-          description: '显示数量'
-          required: false
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetDataList'
-  /getUserWithPwd:
-    get:
-      tags:
-        - UserManage
-      summary: 用户是否存在
-      operationId: IsUserExsit
-      parameters:
-        - name: userId
-          in: query
-          description: ''
-          required: false
-          schema:
-            type: string
-        - name: pwd
-          in: query
-          description: ''
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/IsUserExsitData'
   /getAccount:
     get:
       tags:
         - UserManage
-      summary: 获取账务信息
+      summary: ''
       operationId: GetAccount
       parameters:
         - name: accountType
           in: query
-          description: '账户产品类型（如：MDCheck）'
+          description: '账户产品类型'
           required: false
           schema:
             type: string
@@ -171,12 +95,12 @@ paths:
     get:
       tags:
         - UserManage
-      summary: 批量获取用户财务信息
+      summary: ''
       operationId: GetAccountList
       parameters:
         - name: accountType
           in: query
-          description: 账号类型（AccountId.accountType）
+          description: 账号类型
           required: false
           schema:
             type: string
@@ -196,26 +120,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetBatchGroupAccountData'
-  /getAccountList:
-    get:
-      tags:
-        - UserManage
-      summary: 获取用户购买产品列表
-      operationId: GetAccountProductList
-      parameters:
-        - name: userId
-          in: query
-          description: ''
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetAccountDataList'
+
   /addSubUser:
     post:
       tags:
@@ -236,35 +141,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetData'
-                
-  /addStudentUser:
-    post:
-      tags:
-        - UserManage
-      summary: 添加学生账户
-      operationId: AddStudentUser
-      parameters:
-        - name: userInfo
-          in: query
-          description: '用户信息'
-          required: false
-          schema:
-            $ref: '#/components/schemas/UserInfos'
-           
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetData'
-                
+                $ref: '#/components/schemas/GetData'              
   /updateUser:
     post:
       tags:
         - UserManage
-      summary: 更新用户信息
+      summary: ''
       operationId: UpdateUser
       parameters:
         - name: userInfo
@@ -273,46 +155,6 @@ paths:
           required: false
           schema:
             $ref: '#/components/schemas/UserInfos'
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetData'
-  /freezeUser:
-    post:
-      tags:
-        - UserManage
-      summary: "冻结用户\r\n1--冻结、2--解冻"
-      operationId: FreezeUser
-      parameters:
-        - name: userId
-          in: query
-          description: ''
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetData'
-  /defreezeUser:
-    post:
-      tags:
-        - UserManage
-      summary: "解冻用户\r\n1--冻结、2--解冻"
-      operationId: DefreezeUser
-      parameters:
-        - name: userId
-          in: query
-          description: ''
-          required: false
-          schema:
-            type: string
       responses:
         '200':
           description: Success
@@ -465,42 +307,7 @@ components:
         graduatedSchool:
           description: 毕业院系
           type: string
-  
-    GetIPData:
-      description: 获取用户信息
-      type: object
-      properties:
-        message:
-          description: ''
-          type: string
-        status:
-          format: int32
-          description: ''
-          type: integer
-        data:
-          description: ''
-          uniqueItems: false
-          type: array
-          items:
-            $ref: '#/components/schemas/UserIp'
-    UserIp:
-      type: object
-      properties:
-        id:
-          type: string
-        userId:
-          type: string
-        beginIpAddressNumber:
-          format: int64
-          type: integer
-        endIpAddressNumber:
-          format: int64
-          type: integer
-        sort:
-          format: int32
-          type: integer
-        mode:
-          type: string
+          
     UserSearchRequest:
       description: 用户检索条件类
       type: object
@@ -544,23 +351,7 @@ components:
           type: integer
         empty:
           type: boolean
-    IsUserExsitData:
-      description: 用户是否存在
-      type: object
-      properties:
-        message:
-          description: ''
-          type: string
-        status:
-          format: int32
-          description: ''
-          type: integer
-        data:
-          description: ''
-          uniqueItems: false
-          type: array
-          items:
-            $ref: '#/components/schemas/UserInfos'
+          
     AccountId:
       type: object
       properties:
@@ -671,3 +462,5 @@ components:
 tags:
   - name: MyTestApi
     description: ''
+
+```
