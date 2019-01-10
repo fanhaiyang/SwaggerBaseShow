@@ -135,8 +135,7 @@ paths:
           description: '用户信息'
           required: false
           schema:
-            $ref: '#/components/schemas/UserInfos'
-              
+            $ref: '#/components/schemas/UserInfos'     
       responses:
         '200':
           description: Success
@@ -144,19 +143,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetData'              
+  
   /updateUser:
     post:
       tags:
         - UserManage
       summary: ''
       operationId: UpdateUser
-      parameters:
-        - name: userInfo
-          in: query
-          description: ''
-          required: false
-          schema:
-            $ref: '#/components/schemas/UserInfos'
+      requestBody:
+          content: 
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/UserInfos'
       responses:
         '200':
           description: Success
@@ -164,6 +162,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetData'
+  
   /updateLoginMode:
     post:
       tags:
